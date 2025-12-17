@@ -1,0 +1,25 @@
+name: Auto Sync Upstream
+
+on:
+  schedule:
+    # 每天凌晨 4 点执行（北京时间 12 点左右）
+    - cron: '0 4 * * *'
+  workflow_dispatch: # 允许你手动点击按钮触发测试
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Sync Upstream
+        uses: aormsby/Fork-Sync-With-Upstream-action@v3.4.1
+        with:
+          target_repo_token: ${{ secrets.GITHUB_TOKEN }}
+          upstream_repository: jaywcjlove/reference
+          upstream_branch: main
+          target_branch: main
+          test_mode: false # 如果你之前没改过源码，这里设为 false 会直接强行同步
