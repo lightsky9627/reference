@@ -2,24 +2,31 @@ name: Auto Sync Upstream
 
 on:
   schedule:
-    # 每天凌晨 4 点执行（北京时间 12 点左右）
-    - cron: '0 4 * * *'
-  workflow_dispatch: # 允许你手动点击按钮触发测试
+    - cron: '0 4 * * *' # 每天凌晨4点同步
+  workflow_dispatch:    # 允许手动触发
 
 jobs:
-  sync:
+  sync_latest_from_upstream:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # 重要！显式赋予写权限
+      
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Checkout target repo
+        uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          ref: main             # 必须先签出 main 分支
+          persist-credentials: false
 
-      - name: Sync Upstream
+      - name: Sync upstream changes
+        id: sync
         uses: aormsby/Fork-Sync-With-Upstream-action@v3.4.1
         with:
+          # --- 修正后的参数名 ---
+          target_sync_branch: main
           target_repo_token: ${{ secrets.GITHUB_TOKEN }}
-          upstream_repository: jaywcjlove/reference
-          upstream_branch: main
-          target_branch: main
-          test_mode: false # 如果你之前没改过源码，这里设为 false 会直接强行同步
+          upstream_sync_repo: jaywcjlove/reference
+          upstream_sync_branch: main
+          
+          # --- 其它参数 ---
+          test_mode: false      # 设为 false 才会真正执行合并
