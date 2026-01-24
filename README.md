@@ -612,10 +612,11 @@ Quick Reference
 
 由于中国国内访问，时常打不开，你可以访问下面镜像网站(国内打不开的不再收录)。推荐自己的[镜像网站](https://github.com/jaywcjlove/reference/discussions/206#discussion-4625735)
 
+[stacktao.cn](https://ref.stacktao.cn)<!--rehype:target=_blank-->
 [chanlun.pro](https://ref.chanlun.pro)<!--rehype:target=_blank-->
 [ljdyjh.cn](https://ref.ljdyjh.cn)<!--rehype:target=_blank-->
 [szsyw.cn](https://projects.szsyw.cn/reference/)<!--rehype:target=_blank-->
-[hanacloud.site](https://reference.hanacloud.site)<!--rehype:target=_blank-->
+[hanauta.icu](https://ref.hanauta.icu)<!--rehype:target=_blank-->
 [doc.xyz.sb](https://doc.xyz.sb)<!--rehype:target=_blank-->
 [quickref.cn](https://quickref.cn)<!--rehype:target=_blank-->
 [axchen.top](https://ref.tool.axchen.top)<!--rehype:target=_blank-->
